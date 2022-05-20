@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 *,*:before, *:after {
     box-sizing: border-box;
 }
@@ -8,8 +9,8 @@
     text-decoration: none;
 }
 body {
-    font-family: 'monospace','Poppins', Georgia,'Times New Roman', serif;
-    background: green;
+    font-family: 'Quicksand','Poppins', Georgia,'Times New Roman', serif;
+    background: #fffafa;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -18,10 +19,9 @@ body {
 }
 h1 {
     display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 4rem 0 4rem 0;
-    font-size: 2.5rem;
+    justify-content: flex-start;
+    margin: 3rem 0 3rem 0;
+    font-size: 3rem;
     font-weight: bold;
 }
 h2{
@@ -40,33 +40,43 @@ form {
     padding: 1rem;
     box-shadow: 0 5px 8px rgb(0 0 0 / 30%);
 }
+label{
+        font-weight: 600;
+}
 textarea {
+    font-weight: 500;
+    font-size: 16px;
     margin: 0.5rem 0 0.5rem 0;
     width: 36rem;
     height: 12rem;
     resize: none;
 }
 form button {
+    font-size: 0.9rem;
     cursor: pointer;
     height: 2rem;
     width: 6rem;
+}
+
+.responses-container {
+    width: 40rem;
 }
 .response {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: aqua;
+    background-color: #E5E5E5;
     border-radius: 0.25rem;
+    padding: 1.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 8px rgb(0 0 0 / 30%);
 }
 .response-items {
     display: flex;
     flex-direction: row;
+    font-weight: 500;
 }
 
 .response-items-title{
-    min-width: 6.5rem;
+    min-width: 6rem;
+    font-weight: 700;
 }
-
-  /*centers container margin: 0 auto;*/

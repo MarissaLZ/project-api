@@ -28,9 +28,7 @@ const App = () => {
       })
         .then((response) =>response.json())
         .then((data) => {
-          console.log(data.choices)
           const aiResponse = data.choices[0].text
-          console.log(aiResponse)
           setOutputList((outputList) => 
           [ { id: Date.now(), prompt: search,aiResponse: aiResponse,}, ...outputList])
         })
@@ -51,8 +49,10 @@ const App = () => {
     <>
       <h1>Fun with AI</h1>
       <AddPromptForm handleSearch={handleSearch}/>
-      <h2>Responses</h2>
-      <List outputList={outputList}/> 
+      {!!outputList.length ? <><h2>Responses</h2> <List outputList={outputList}/></> : null}
+      {/* change conditioanlly rendering later*/ }
+       
+     
     </>
   )
 }

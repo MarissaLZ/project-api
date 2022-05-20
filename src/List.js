@@ -3,7 +3,7 @@ import Item from './Item'
 
 const List = ({outputList}) => {
     return (
-        <ul>
+        <ul className="responses-container">
             {outputList.map((item) => { 
                 return(
                     <Item key={item.id} prompt={item.prompt} response={item.aiResponse}/>
