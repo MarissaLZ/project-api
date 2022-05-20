@@ -3,13 +3,11 @@ import React from 'react';
 import AddPromptForm from './AddPromptForm';
 import List from './List';
 
-
 const App = () => {
   const [search, setSearch] = React.useState("")
-  //const [output, setOutput] = React.useState("")
-  const [outputList, setOutputList] =React.useState([])
-  
-  //fetches search
+  const [outputList, setOutputList] = React.useState(JSON.parse(localStorage.getItem("savedResponses")) || [])
+ 
+  //fetches user search
   React.useEffect(()=> {
     if (search !== "") {
       const prompt = {
@@ -25,7 +23,6 @@ const App = () => {
         headers: {
             Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
             "Content-Type": "application/json",
-           
         },
         body: JSON.stringify(prompt),
       })
@@ -34,7 +31,6 @@ const App = () => {
           console.log(data.choices)
           const aiResponse = data.choices[0].text
           console.log(aiResponse)
-          //setOutput(aiResponse)
           setOutputList((outputList) => 
           [ { id: Date.now(), prompt: search,aiResponse: aiResponse,}, ...outputList])
         })
@@ -42,11 +38,15 @@ const App = () => {
     }
   },[search])
 
+  //stores user responses
+  React.useEffect(() => {
+    localStorage.setItem('savedResponses', JSON.stringify(outputList));
+  }, [outputList]);
+
+  //updates search state
   const handleSearch = (newSearch) => {
     setSearch(newSearch)
   }
- 
-  console.log("promptList",outputList)
   return (
     <>
       <h1>Fun with AI</h1>
