@@ -37,18 +37,19 @@ body {
     border-radius: 0.25rem;
     margin-bottom: 3rem;
     height: 20rem;
-    width: 40rem;
-    padding: 1rem;
+    width: 45rem;
+    padding: 1rem 2.5rem;
     box-shadow: 0 5px 8px rgb(0 0 0 / 30%);
 }
 .label {
+    display: flex;
+    flex-direction: column;
     font-weight: 600;
 }
 .textarea {
     font-weight: 500;
     font-size: 16px;
     margin: 0.5rem 0 0.5rem 0;
-    width: 36rem;
     height: 12rem;
     resize: none;
 }
@@ -71,7 +72,7 @@ body {
     margin: 10rem;
 }
 .list {
-    width: 40rem;
+    width: 45rem;
 }
 .sublist {
     display: flex;
