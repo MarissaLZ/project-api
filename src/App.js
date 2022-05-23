@@ -2,14 +2,18 @@ import "./style.css"
 import React from 'react';
 import AddPromptForm from './AddPromptForm';
 import List from './List';
+import Loading from './Loading';
 
 const App = () => {
   const [search, setSearch] = React.useState("")
   const [outputList, setOutputList] = React.useState(JSON.parse(localStorage.getItem("savedResponses")) || [])
+  const [isLoading, setIsLoading] = React.useState(false)
  
   //fetches user search
   React.useEffect(()=> {
     if (search !== "") {
+      setIsLoading(true)
+
       const prompt = {
         "prompt": search,
         "temperature": 0.6,
@@ -30,7 +34,8 @@ const App = () => {
         .then((data) => {
           const aiResponse = data.choices[0].text
           setOutputList((outputList) => 
-          [ { id: Date.now(), prompt: search,aiResponse: aiResponse,}, ...outputList])
+          [ { id: Date.now(), prompt: search,aiResponse: aiResponse,} , ...outputList])
+          setIsLoading(false)
         })
         .catch((error) => console.log("error", error))
     }
@@ -47,12 +52,10 @@ const App = () => {
   }
   return (
     <>
-      <h1>Fun with AI</h1>
-      <AddPromptForm handleSearch={handleSearch}/>
-      {!!outputList.length ? <><h2>Responses</h2> <List outputList={outputList}/></> : null}
-      {/* change conditioanlly rendering later*/ }
-       
-     
+      <h1 className="title">Fun with AI</h1>
+      <AddPromptForm handleSearch={handleSearch} isLoading={isLoading}/>
+      {!isLoading && !!outputList.length && <h2 className="subtitle">Responses</h2>}     
+      {isLoading ? <Loading /> : <List outputList={outputList}/>}
     </>
   )
 }
