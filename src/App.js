@@ -1,9 +1,9 @@
 import "./style.css"
 import React from 'react';
-import AddPromptForm from './AddPromptForm';
-import List from './List';
-import Loading from './Loading';
-
+import AddPromptForm from './components/AddPromptForm';
+import List from './components/List';
+import Loading from './components/Loading';
+//add character count
 const App = () => {
   const [search, setSearch] = React.useState("")
   const [outputList, setOutputList] = React.useState(JSON.parse(localStorage.getItem("savedResponses")) || [])

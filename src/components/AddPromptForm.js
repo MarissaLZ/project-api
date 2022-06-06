@@ -12,7 +12,7 @@ const AddPromptForm = ({handleSearch, isLoading}) => {
         <form className='form' onSubmit={handleSubmit}>     
             <label className="label" htmlFor="prompt">
                 Enter a Prompt:
-                <textarea className='textarea' id="prompt" name="prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)}/>
+                <textarea className='textarea' id="prompt" name="prompt" placeholder='Enter prompt' value={prompt} onChange={(e) => setPrompt(e.target.value)}/>
             </label>
             <button className='btn' type="submit" disabled={isLoading}>Submit</button>
         </form>
