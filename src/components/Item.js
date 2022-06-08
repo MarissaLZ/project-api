@@ -4,11 +4,11 @@ const Item = ({prompt,response}) => {
             <ul className="sublist">
                 <li className="sublist-item">
                     <span className="item-title">Prompt:</span>
-                    <span>{prompt}</span>
+                    <span className="item-text">{prompt}</span>
                 </li>
                 <li className="sublist-item">
                     <span className="item-title">Response:</span>
-                    <span>{response}</span>
+                    <span className="item-text">{response}</span>
                 </li>
             </ul>
         </li>
